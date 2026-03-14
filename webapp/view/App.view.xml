@@ -12,42 +12,48 @@
                 <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="BTC/USDC">
                     <content>
                         <Text text="{crypto>/prices/BTCUSDC}" class="sapUiTinyMarginBottom" wrapping="false" />
-                        <core:HTML id="chartBtc" content="&lt;canvas style='width:100%;height:60px'&gt;&lt;/canvas&gt;" />
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartBtc" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasBtc' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/BTCUSDC}" state="Error" visible="{= ${crypto>/errors/BTCUSDC} !== '' }" />
                     </content>
                 </Panel>
                 <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="ETH/USDC">
                     <content>
                         <Text text="{crypto>/prices/ETHUSDC}" class="sapUiTinyMarginBottom" wrapping="false" />
-                        <core:HTML id="chartEth" content="&lt;canvas style='width:100%;height:60px'&gt;&lt;/canvas&gt;" />
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartEth" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasEth' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/ETHUSDC}" state="Error" visible="{= ${crypto>/errors/ETHUSDC} !== '' }" />
                     </content>
                 </Panel>
                 <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="SOL/USDC">
                     <content>
                         <Text text="{crypto>/prices/SOLUSDC}" class="sapUiTinyMarginBottom" wrapping="false" />
-                        <core:HTML id="chartSol" content="&lt;canvas style='width:100%;height:60px'&gt;&lt;/canvas&gt;" />
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartSol" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasSol' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/SOLUSDC}" state="Error" visible="{= ${crypto>/errors/SOLUSDC} !== '' }" />
                     </content>
                 </Panel>
                 <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="POL/USDC">
                     <content>
                         <Text text="{crypto>/prices/POLUSDC}" class="sapUiTinyMarginBottom" wrapping="false" />
-                        <core:HTML id="chartPol" content="&lt;canvas style='width:100%;height:60px'&gt;&lt;/canvas&gt;" />
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartPol" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasPol' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/POLUSDC}" state="Error" visible="{= ${crypto>/errors/POLUSDC} !== '' }" />
                     </content>
                 </Panel>
                 <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="AVAX/USDC">
                     <content>
                         <Text text="{crypto>/prices/AVAXUSDC}" class="sapUiTinyMarginBottom" wrapping="false" />
-                        <core:HTML id="chartAvax" content="&lt;canvas style='width:100%;height:60px'&gt;&lt;/canvas&gt;" />
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartAvax" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasAvax' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/AVAXUSDC}" state="Error" visible="{= ${crypto>/errors/AVAXUSDC} !== '' }" />
                     </content>
                 </Panel>
                 <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="LINK/USDC">
                     <content>
                         <Text text="{crypto>/prices/LINKUSDC}" class="sapUiTinyMarginBottom" wrapping="false" />
-                        <core:HTML id="chartLink" content="&lt;canvas style='width:100%;height:60px'&gt;&lt;/canvas&gt;" />
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartLink" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasLink' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/LINKUSDC}" state="Error" visible="{= ${crypto>/errors/LINKUSDC} !== '' }" />
                     </content>
                 </Panel>

@@ -6,12 +6,12 @@ sap.ui.define([
     "use strict";
 
     var CHARTS = [
-        { symbol: "BTCUSDC", title: "BTC/USDC", htmlId: "chartBtc", color: "#f7931a" },
-        { symbol: "ETHUSDC", title: "ETH/USDC", htmlId: "chartEth", color: "#627eea" },
-        { symbol: "SOLUSDC", title: "SOL/USDC", htmlId: "chartSol", color: "#14f195" },
-        { symbol: "POLUSDC", title: "POL/USDC", htmlId: "chartPol", color: "#8247e5" },
-        { symbol: "AVAXUSDC", title: "AVAX/USDC", htmlId: "chartAvax", color: "#e84142" },
-        { symbol: "LINKUSDC", title: "LINK/USDC", htmlId: "chartLink", color: "#2a5ada" }
+        { symbol: "BTCUSDC", title: "BTC/USDC", canvasId: "canvasBtc", color: "#f7931a" },
+        { symbol: "ETHUSDC", title: "ETH/USDC", canvasId: "canvasEth", color: "#627eea" },
+        { symbol: "SOLUSDC", title: "SOL/USDC", canvasId: "canvasSol", color: "#14f195" },
+        { symbol: "POLUSDC", title: "POL/USDC", canvasId: "canvasPol", color: "#8247e5" },
+        { symbol: "AVAXUSDC", title: "AVAX/USDC", canvasId: "canvasAvax", color: "#e84142" },
+        { symbol: "LINKUSDC", title: "LINK/USDC", canvasId: "canvasLink", color: "#2a5ada" }
     ];
 
     return Controller.extend("cryptodash.controller.App", {
@@ -77,9 +77,7 @@ sap.ui.define([
                     return;
                 }
 
-                var oHtml = this.byId(oChart.htmlId);
-                var oDomRef = oHtml && oHtml.getDomRef();
-                var oCanvas = oDomRef && oDomRef.querySelector("canvas");
+                var oCanvas = document.getElementById(oChart.canvasId);
 
                 if (!oCanvas) {
                     return;
@@ -170,12 +168,30 @@ sap.ui.define([
                 return;
             }
 
+            var sLineColor = "#9e9e9e";
+            var sFillColor = "rgba(158, 158, 158, 0.2)";
+
+            if (aData.length >= 2) {
+                var fFirst = aData[0].price;
+                var fLast = aData[aData.length - 1].price;
+
+                if (fLast > fFirst) {
+                    sLineColor = "#2e7d32";
+                    sFillColor = "rgba(46, 125, 50, 0.2)";
+                } else if (fLast < fFirst) {
+                    sLineColor = "#c62828";
+                    sFillColor = "rgba(198, 40, 40, 0.2)";
+                }
+            }
+
             oChart.data.labels = aData.map(function (oPoint) {
                 return oPoint.time;
             });
             oChart.data.datasets[0].data = aData.map(function (oPoint) {
                 return oPoint.price;
             });
+            oChart.data.datasets[0].borderColor = sLineColor;
+            oChart.data.datasets[0].backgroundColor = sFillColor;
             oChart.update("none");
         }
     });
