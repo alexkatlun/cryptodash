@@ -1,0 +1,14 @@
+specVersion: "3.0"
+metadata:
+  name: crypto
+type: application
+framework:
+  name: OpenUI5
+  version: "1.128.0"
+  libraries:
+    - name: sap.m
+    - name: sap.ui.core
+resources:
+  configuration:
+    paths:
+      webapp: webapp

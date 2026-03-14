@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dashboard</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #content {
+            flex: 1 1 auto;
+            min-height: 0;
+        }
+
+        #content,
+        #content > div,
+        #content .sapUiComponentContainer,
+        #content .sapUiComponentContainer > div,
+        #content .sapMApp,
+        #content .sapMPage {
+            height: 100%;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script
+        id="sap-ui-bootstrap"
+        src="https://ui5.sap.com/resources/sap-ui-core.js"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-resourceroots='{"cryptodash": "./"}'
+        data-sap-ui-async="true"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-libs="sap.m"
+        data-sap-ui-frameOptions="trusted">
+    </script>
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            sap.ui.component({
+                name: "cryptodash",
+                async: true,
+                manifest: true
+            }).then(function (oComponent) {
+                new sap.ui.core.ComponentContainer({
+                    component: oComponent,
+                    height: "auto"
+                }).placeAt("content");
+            }).catch(function (err) {
+                console.error(err);
+            });
+        });
+    </script>
+</head>
+<body class="sapUiBody sapUiSizeCompact">
+    <div id="content"></div>
+</body>
+</html>
