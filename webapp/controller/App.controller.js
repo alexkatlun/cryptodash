@@ -22,14 +22,20 @@ sap.ui.define([
 
             var oErrors = {};
             var oPrices = {};
+            var oChanges = {};
+            var oChangeStates = {};
             CHARTS.forEach(function (oChart) {
                 oErrors[oChart.symbol] = "";
                 oPrices[oChart.symbol] = "-";
+                oChanges[oChart.symbol] = "-";
+                oChangeStates[oChart.symbol] = "None";
             });
 
             var oCryptoModel = new JSONModel({
                 errors: oErrors,
                 prices: oPrices,
+                changes: oChanges,
+                changeStates: oChangeStates,
                 lastUpdateDisplay: "-"
             });
 
@@ -125,14 +131,26 @@ sap.ui.define([
         },
 
         _loadSymbolData: function (sSymbol) {
-            var sUrl = "https://api.binance.com/api/v3/klines?symbol=" + encodeURIComponent(sSymbol) + "&interval=1m&limit=30";
+            var sKlineUrl = "https://api.binance.com/api/v3/klines?symbol=" + encodeURIComponent(sSymbol) + "&interval=1m&limit=30";
+            var sTickerUrl = "https://api.binance.com/api/v3/ticker/24hr?symbol=" + encodeURIComponent(sSymbol);
 
-            return jQuery.ajax({
-                url: sUrl,
+            var pKlines = jQuery.ajax({
+                url: sKlineUrl,
                 method: "GET",
                 dataType: "json"
-            })
-                .then(function (aKlines) {
+            });
+
+            var pTicker = jQuery.ajax({
+                url: sTickerUrl,
+                method: "GET",
+                dataType: "json"
+            });
+
+            return Promise.all([pKlines, pTicker])
+                .then(function (aResult) {
+                    var aKlines = aResult[0];
+                    var oTicker = aResult[1];
+
                     var aSeries = aKlines.map(function (aCandle) {
                         var oTime = new Date(aCandle[0]);
                         return {
@@ -144,14 +162,35 @@ sap.ui.define([
                     this._latestData[sSymbol] = aSeries;
                     this._setError(sSymbol, "");
                     this._setPrice(sSymbol, aSeries.length ? aSeries[aSeries.length - 1].price : "-");
+                    this._setChange(sSymbol, oTicker && oTicker.priceChangePercent);
                     this._applyChartData(sSymbol, aSeries);
                 }.bind(this))
                 .catch(function (oError) {
                     this._latestData[sSymbol] = [];
                     this._setPrice(sSymbol, "-");
+                    this._setChange(sSymbol, null);
                     this._setError(sSymbol, "Unable to load " + sSymbol + " (" + (oError.statusText || oError.message || "Request failed") + ")");
                     this._applyChartData(sSymbol, []);
                 }.bind(this));
+        },
+
+        _setChange: function (sSymbol, vPercent) {
+            var fPercent = Number(vPercent);
+            var sText = "-";
+            var sState = "None";
+
+            if (isFinite(fPercent)) {
+                sText = (fPercent > 0 ? "+" : "") + fPercent.toFixed(2) + "%";
+
+                if (fPercent > 0) {
+                    sState = "Success";
+                } else if (fPercent < 0) {
+                    sState = "Error";
+                }
+            }
+
+            this.getView().getModel("crypto").setProperty("/changes/" + sSymbol, sText);
+            this.getView().getModel("crypto").setProperty("/changeStates/" + sSymbol, sState);
         },
 
         _setError: function (sSymbol, sError) {
@@ -159,7 +198,19 @@ sap.ui.define([
         },
 
         _setPrice: function (sSymbol, vPrice) {
-            this.getView().getModel("crypto").setProperty("/prices/" + sSymbol, String(vPrice));
+            this.getView().getModel("crypto").setProperty("/prices/" + sSymbol, this._formatPrice(vPrice));
+        },
+
+        _formatPrice: function (vPrice) {
+            var fValue = Number(vPrice);
+            if (!isFinite(fValue)) {
+                return "-";
+            }
+
+            return new Intl.NumberFormat("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 6
+            }).format(fValue);
         },
 
         _applyChartData: function (sSymbol, aData) {
