@@ -23,11 +23,13 @@ sap.ui.define([
 
             var oErrors = {};
             var oPrices = {};
+            var oEurPrices = {};
             var oChanges = {};
             var oChangeStates = {};
             CHARTS.forEach(function (oChart) {
                 oErrors[oChart.symbol] = "";
                 oPrices[oChart.symbol] = "-";
+                oEurPrices[oChart.symbol] = "-";
                 oChanges[oChart.symbol] = "-";
                 oChangeStates[oChart.symbol] = "None";
             });
@@ -35,6 +37,7 @@ sap.ui.define([
             var oCryptoModel = new JSONModel({
                 errors: oErrors,
                 prices: oPrices,
+                eurPrices: oEurPrices,
                 changes: oChanges,
                 changeStates: oChangeStates,
                 lastUpdateDisplay: "-"
@@ -133,6 +136,8 @@ sap.ui.define([
         _loadSymbolData: function (sSymbol) {
             var sKlineUrl = "https://api.binance.com/api/v3/klines?symbol=" + encodeURIComponent(sSymbol) + "&interval=30m&limit=48";
             var sTickerUrl = "https://api.binance.com/api/v3/ticker/24hr?symbol=" + encodeURIComponent(sSymbol);
+            var sBaseSymbol = sSymbol.replace("USDC", "");
+            var sEurTickerUrl = "https://api.binance.com/api/v3/ticker/price?symbol=" + encodeURIComponent(sBaseSymbol + "EUR");
 
             var pKlines = jQuery.ajax({
                 url: sKlineUrl,
@@ -146,10 +151,17 @@ sap.ui.define([
                 dataType: "json"
             });
 
-            return Promise.all([pKlines, pTicker])
+            var pEurTicker = jQuery.ajax({
+                url: sEurTickerUrl,
+                method: "GET",
+                dataType: "json"
+            });
+
+            return Promise.all([pKlines, pTicker, pEurTicker])
                 .then(function (aResult) {
                     var aKlines = aResult[0];
                     var oTicker = aResult[1];
+                    var oEurTicker = aResult[2];
 
                     var aSeries = aKlines.map(function (aCandle) {
                         var oTime = new Date(aCandle[0]);
@@ -162,12 +174,14 @@ sap.ui.define([
                     this._latestData[sSymbol] = aSeries;
                     this._setError(sSymbol, "");
                     this._setPrice(sSymbol, aSeries.length ? aSeries[aSeries.length - 1].price : "-");
+                    this._setEurPrice(sSymbol, oEurTicker && oEurTicker.price);
                     this._setChange(sSymbol, oTicker && oTicker.priceChangePercent);
                     this._applyChartData(sSymbol, aSeries);
                 }.bind(this))
                 .catch(function (oError) {
                     this._latestData[sSymbol] = [];
                     this._setPrice(sSymbol, "-");
+                    this._setEurPrice(sSymbol, "-");
                     this._setChange(sSymbol, null);
                     this._setError(sSymbol, "Unable to load " + sSymbol + " (" + (oError.statusText || oError.message || "Request failed") + ")");
                     this._applyChartData(sSymbol, []);
@@ -201,13 +215,29 @@ sap.ui.define([
             this.getView().getModel("crypto").setProperty("/prices/" + sSymbol, this._formatPrice(vPrice));
         },
 
+        _setEurPrice: function (sSymbol, vPrice) {
+            this.getView().getModel("crypto").setProperty("/eurPrices/" + sSymbol, this._formatEurPrice(vPrice));
+        },
+
         _formatPrice: function (vPrice) {
             var fValue = Number(vPrice);
             if (!isFinite(fValue)) {
                 return "-";
             }
 
-            return "$" + new Intl.NumberFormat("en-US", {
+            return "$ " + new Intl.NumberFormat("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 6
+            }).format(fValue);
+        },
+
+        _formatEurPrice: function (vPrice) {
+            var fValue = Number(vPrice);
+            if (!isFinite(fValue)) {
+                return "-";
+            }
+
+            return "€ " + new Intl.NumberFormat("en-US", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 6
             }).format(fValue);

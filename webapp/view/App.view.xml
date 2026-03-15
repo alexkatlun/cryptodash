@@ -18,7 +18,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/BTCUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/BTCUSDC} + ' | ' + ${crypto>/eurPrices/BTCUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/BTCUSDC}" state="{crypto>/changeStates/BTCUSDC}" />
                             </items>
                         </HBox>
@@ -36,7 +36,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/ETHUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/ETHUSDC} + ' | ' + ${crypto>/eurPrices/ETHUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/ETHUSDC}" state="{crypto>/changeStates/ETHUSDC}" />
                             </items>
                         </HBox>
@@ -54,7 +54,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/SOLUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/SOLUSDC} + ' | ' + ${crypto>/eurPrices/SOLUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/SOLUSDC}" state="{crypto>/changeStates/SOLUSDC}" />
                             </items>
                         </HBox>
@@ -72,7 +72,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/XRPUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/XRPUSDC} + ' | ' + ${crypto>/eurPrices/XRPUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/XRPUSDC}" state="{crypto>/changeStates/XRPUSDC}" />
                             </items>
                         </HBox>
@@ -90,7 +90,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/POLUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/POLUSDC} + ' | ' + ${crypto>/eurPrices/POLUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/POLUSDC}" state="{crypto>/changeStates/POLUSDC}" />
                             </items>
                         </HBox>
@@ -108,7 +108,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/AVAXUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/AVAXUSDC} + ' | ' + ${crypto>/eurPrices/AVAXUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/AVAXUSDC}" state="{crypto>/changeStates/AVAXUSDC}" />
                             </items>
                         </HBox>
@@ -126,7 +126,7 @@
                     <content>
                         <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
-                                <Text text="{crypto>/prices/LINKUSDC}" wrapping="false" />
+                                <Text text="{= ${crypto>/prices/LINKUSDC} + ' | ' + ${crypto>/eurPrices/LINKUSDC} }" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/LINKUSDC}" state="{crypto>/changeStates/LINKUSDC}" />
                             </items>
                         </HBox>
