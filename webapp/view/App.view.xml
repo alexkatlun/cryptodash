@@ -4,86 +4,134 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <VBox class="sapUiTinyMargin">
-        <Title text="{i18n>homeTitle}" level="H5" class="sapUiTinyMarginBottom" />
+    <VBox class="sapUiSmallMargin">
+        <Title text="{i18n>homeTitle}" level="H4" class="sapUiSmallMarginBottom" />
         <Text text="Updated: {crypto>/lastUpdateDisplay}" class="sapUiTinyMarginBottom sapUiSmallMarginEnd" />
         <FlexBox wrap="Wrap" renderType="Div" justifyContent="Start" alignItems="Start">
             <items>
-                <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="BTC/USDC">
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="BTC/USDC" tooltip="Bitcoin" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
                     <content>
-                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
                                 <Text text="{crypto>/prices/BTCUSDC}" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/BTCUSDC}" state="{crypto>/changeStates/BTCUSDC}" />
                             </items>
                         </HBox>
                         <Text text="Intraday" class="sapUiTinyMarginBottom" />
-                        <core:HTML id="chartBtc" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasBtc' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <core:HTML id="chartBtc" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasBtc' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/BTCUSDC}" state="Error" visible="{= ${crypto>/errors/BTCUSDC} !== '' }" />
                     </content>
                 </Panel>
-                <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="ETH/USDC">
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="ETH/USDC" tooltip="Ethereum" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
                     <content>
-                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
                                 <Text text="{crypto>/prices/ETHUSDC}" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/ETHUSDC}" state="{crypto>/changeStates/ETHUSDC}" />
                             </items>
                         </HBox>
                         <Text text="Intraday" class="sapUiTinyMarginBottom" />
-                        <core:HTML id="chartEth" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasEth' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <core:HTML id="chartEth" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasEth' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/ETHUSDC}" state="Error" visible="{= ${crypto>/errors/ETHUSDC} !== '' }" />
                     </content>
                 </Panel>
-                <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="SOL/USDC">
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="SOL/USDC" tooltip="Solana" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
                     <content>
-                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
                                 <Text text="{crypto>/prices/SOLUSDC}" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/SOLUSDC}" state="{crypto>/changeStates/SOLUSDC}" />
                             </items>
                         </HBox>
                         <Text text="Intraday" class="sapUiTinyMarginBottom" />
-                        <core:HTML id="chartSol" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasSol' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <core:HTML id="chartSol" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasSol' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/SOLUSDC}" state="Error" visible="{= ${crypto>/errors/SOLUSDC} !== '' }" />
                     </content>
                 </Panel>
-                <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="POL/USDC">
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="XRP/USDC" tooltip="XRP" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
                     <content>
-                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
+                            <items>
+                                <Text text="{crypto>/prices/XRPUSDC}" wrapping="false" />
+                                <ObjectStatus text="{crypto>/changes/XRPUSDC}" state="{crypto>/changeStates/XRPUSDC}" />
+                            </items>
+                        </HBox>
+                        <Text text="Intraday" class="sapUiTinyMarginBottom" />
+                        <core:HTML id="chartXrp" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasXrp' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <ObjectStatus text="{crypto>/errors/XRPUSDC}" state="Error" visible="{= ${crypto>/errors/XRPUSDC} !== '' }" />
+                    </content>
+                </Panel>
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="POL/USDC" tooltip="Polygon Ecosystem Token" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
+                    <content>
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
                                 <Text text="{crypto>/prices/POLUSDC}" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/POLUSDC}" state="{crypto>/changeStates/POLUSDC}" />
                             </items>
                         </HBox>
                         <Text text="Intraday" class="sapUiTinyMarginBottom" />
-                        <core:HTML id="chartPol" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasPol' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <core:HTML id="chartPol" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasPol' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/POLUSDC}" state="Error" visible="{= ${crypto>/errors/POLUSDC} !== '' }" />
                     </content>
                 </Panel>
-                <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="AVAX/USDC">
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="AVAX/USDC" tooltip="Avalanche" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
                     <content>
-                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
                                 <Text text="{crypto>/prices/AVAXUSDC}" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/AVAXUSDC}" state="{crypto>/changeStates/AVAXUSDC}" />
                             </items>
                         </HBox>
                         <Text text="Intraday" class="sapUiTinyMarginBottom" />
-                        <core:HTML id="chartAvax" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasAvax' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <core:HTML id="chartAvax" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasAvax' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/AVAXUSDC}" state="Error" visible="{= ${crypto>/errors/AVAXUSDC} !== '' }" />
                     </content>
                 </Panel>
-                <Panel width="12rem" class="sapUiTinyMarginEnd sapUiTinyMarginBottom" headerText="LINK/USDC">
+                <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="LINK/USDC" tooltip="Chainlink" level="H6" />
+                        </Toolbar>
+                    </headerToolbar>
                     <content>
-                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiTinyMarginBottom">
+                        <HBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginBottom">
                             <items>
                                 <Text text="{crypto>/prices/LINKUSDC}" wrapping="false" />
                                 <ObjectStatus text="{crypto>/changes/LINKUSDC}" state="{crypto>/changeStates/LINKUSDC}" />
                             </items>
                         </HBox>
                         <Text text="Intraday" class="sapUiTinyMarginBottom" />
-                        <core:HTML id="chartLink" content="&lt;div style='width:100%;height:60px'&gt;&lt;canvas id='canvasLink' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
+                        <core:HTML id="chartLink" content="&lt;div style='width:100%;height:140px'&gt;&lt;canvas id='canvasLink' style='width:100%;height:100%'&gt;&lt;/canvas&gt;&lt;/div&gt;" />
                         <ObjectStatus text="{crypto>/errors/LINKUSDC}" state="Error" visible="{= ${crypto>/errors/LINKUSDC} !== '' }" />
                     </content>
                 </Panel>

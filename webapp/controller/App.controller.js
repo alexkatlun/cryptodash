@@ -9,6 +9,7 @@ sap.ui.define([
         { symbol: "BTCUSDC", title: "BTC/USDC", canvasId: "canvasBtc", color: "#f7931a" },
         { symbol: "ETHUSDC", title: "ETH/USDC", canvasId: "canvasEth", color: "#627eea" },
         { symbol: "SOLUSDC", title: "SOL/USDC", canvasId: "canvasSol", color: "#14f195" },
+        { symbol: "XRPUSDC", title: "XRP/USDC", canvasId: "canvasXrp", color: "#23292f" },
         { symbol: "POLUSDC", title: "POL/USDC", canvasId: "canvasPol", color: "#8247e5" },
         { symbol: "AVAXUSDC", title: "AVAX/USDC", canvasId: "canvasAvax", color: "#e84142" },
         { symbol: "LINKUSDC", title: "LINK/USDC", canvasId: "canvasLink", color: "#2a5ada" }
@@ -92,7 +93,6 @@ sap.ui.define([
                 var oInstance = new window.Chart(oCanvas.getContext("2d"), {
                     type: "line",
                     data: {
-                        labels: [],
                         datasets: [{
                             label: oChart.title,
                             data: [],
@@ -131,7 +131,7 @@ sap.ui.define([
         },
 
         _loadSymbolData: function (sSymbol) {
-            var sKlineUrl = "https://api.binance.com/api/v3/klines?symbol=" + encodeURIComponent(sSymbol) + "&interval=1m&limit=30";
+            var sKlineUrl = "https://api.binance.com/api/v3/klines?symbol=" + encodeURIComponent(sSymbol) + "&interval=30m&limit=48";
             var sTickerUrl = "https://api.binance.com/api/v3/ticker/24hr?symbol=" + encodeURIComponent(sSymbol);
 
             var pKlines = jQuery.ajax({
@@ -207,7 +207,7 @@ sap.ui.define([
                 return "-";
             }
 
-            return new Intl.NumberFormat("en-US", {
+            return "$" + new Intl.NumberFormat("en-US", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 6
             }).format(fValue);
@@ -227,11 +227,11 @@ sap.ui.define([
                 var fLast = aData[aData.length - 1].price;
 
                 if (fLast > fFirst) {
-                    sLineColor = "#2e7d32";
-                    sFillColor = "rgba(46, 125, 50, 0.2)";
+                    sLineColor = "#16a34a";
+                    sFillColor = "rgba(22, 163, 74, 0.2)";
                 } else if (fLast < fFirst) {
-                    sLineColor = "#c62828";
-                    sFillColor = "rgba(198, 40, 40, 0.2)";
+                    sLineColor = "#dc2626";
+                    sFillColor = "rgba(220, 38, 38, 0.2)";
                 }
             }
 
