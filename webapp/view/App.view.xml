@@ -11,8 +11,13 @@
             <items>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="BTC/USDC" tooltip="Bitcoin" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="BTC/USDC" tooltip="Bitcoin" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/btc-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
@@ -29,8 +34,13 @@
                 </Panel>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="ETH/USDC" tooltip="Ethereum" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="ETH/USDC" tooltip="Ethereum" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/eth-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
@@ -47,8 +57,13 @@
                 </Panel>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="SOL/USDC" tooltip="Solana" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="SOL/USDC" tooltip="Solana" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/sol-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
@@ -65,8 +80,13 @@
                 </Panel>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="XRP/USDC" tooltip="XRP" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="XRP/USDC" tooltip="XRP" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/xrp-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
@@ -83,8 +103,13 @@
                 </Panel>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="POL/USDC" tooltip="Polygon Ecosystem Token" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="POL/USDC" tooltip="Polygon Ecosystem Token" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/pol-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
@@ -101,8 +126,13 @@
                 </Panel>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="AVAX/USDC" tooltip="Avalanche" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="AVAX/USDC" tooltip="Avalanche" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/avax-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
@@ -119,8 +149,13 @@
                 </Panel>
                 <Panel width="17rem" class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
                     <headerToolbar>
-                        <Toolbar>
-                            <Title text="LINK/USDC" tooltip="Chainlink" level="H6" />
+                        <Toolbar class="cryptoCardHeader">
+                            <VBox>
+                                <Title text="LINK/USDC" tooltip="Chainlink" level="H6" />
+                                <Label text="Binance" class="sapUiTinyText" />
+                            </VBox>
+                            <ToolbarSpacer />
+                            <Avatar src="img/link-small.png" displaySize="XS" />
                         </Toolbar>
                     </headerToolbar>
                     <content>
